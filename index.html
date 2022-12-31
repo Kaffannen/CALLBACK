@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-84599P9SEQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-84599P9SEQ');
-  </script>
+  <title>Callback URL</title>
 </head>
 <body>
-  <h1>Kaffanen</h1>
-</body>
-</html>
+  <!-- Placeholder for the request parameters -->
+  <div id="request-params"></div>
+
+  <!-- Optional: Load the jQuery library to simplify DOM manipulation -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // Get the URL parameters
+    function getUrlParams() {
+      var params = {};
+      var search = window.location.search;
+      if (search) {
+        search = search.substring(1); // Remove the leading '?'
+        var parts = search.split('&');
+        for (var i = 0; i < parts.length; i++) {
+          var pair = parts[i].split('=');
+          params[pair[0]] = decodeURIComponent(pair[1]);
+        }
+      }
+      return params;
+    }
+
+    // Process the GET request and display the parameters
+    function processGetRequest() {
+      var params = getUrlParams();
+      var container = $('#request-params'); // Use jQuery to select the element
