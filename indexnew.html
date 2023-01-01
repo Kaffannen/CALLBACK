@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Heipådei Page</title>
+</head>
+<body>
+  <div id="message-container"></div>
+  <script>
+    function addMessage() {
+      // Get the current number of visits to the page
+      let visits = localStorage.getItem("visits") || 0;
+      visits = parseInt(visits, 10) + 1;
+      localStorage.setItem("visits", visits);
+
+      // Create a new element to hold the message
+      let message = document.createElement("p");
+      message.textContent = `Heipådei (${visits})`;
+
+      // Add the message to the page
+      let container = document.getElementById("message-container");
+      container.appendChild(message);
+    }
+
+    // Call the addMessage function when the page loads
+    addMessage();
+  </script>
+</body>
+</html>
