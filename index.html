@@ -6,9 +6,14 @@
 <body>
   <script>
     function addMessage() {
+      // Get the current number of visits to the page
+      let visits = localStorage.getItem("visits") || 0;
+      visits = parseInt(visits, 10) + 1;
+      localStorage.setItem("visits", visits);
+
       // Create a new element to hold the message
       let message = document.createElement("p");
-      message.textContent = "Heipådei";
+      message.textContent = `Heipådei! (${visits})`;
 
       // Add the message to the page
       document.body.appendChild(message);
