@@ -1,33 +1,31 @@
-<!DOCTYPE html>
+			<!DOCTYPE html>
 <html>
 <head>
-  <title>Callback URL</title>
+  <title>GET Request Demo</title>
 </head>
 <body>
-  <!-- Placeholder for the request parameters -->
-  <div id="request-params"></div>
-  <h2>asdf</h2>
-
-  <!-- Optional: Load the jQuery library to simplify DOM manipulation -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <h1>GET Request Demo</h1>
+  <p>
+    The parameters of the GET request are:
+    <span id="parameters"></span>
+  </p>
 
   <script>
-    // Get the URL parameters
-    function getUrlParams() {
-      var params = {};
-      var search = window.location.search;
-      if (search) {
-        search = search.substring(1); // Remove the leading '?'
-        var parts = search.split('&');
-        for (var i = 0; i < parts.length; i++) {
-          var pair = parts[i].split('=');
-          params[pair[0]] = decodeURIComponent(pair[1]);
-        }
-      }
-      return params;
-    }
+    // Get the query string from the URL
+    const queryString = window.location.search;
 
-    // Process the GET request and display the parameters
-    function processGetRequest() {
-      var params = getUrlParams();
-      var container = $('#request-params'); // Use jQuery to select the element
+    // Get the parameters from the query string
+    const urlParams = new URLSearchParams(queryString);
+
+    // Get the "parameters" element from the page
+    const parametersElement = document.getElementById('parameters');
+
+    // Append the parameters to the "parameters" element
+    parametersElement.innerHTML = urlParams;
+
+    // Append the current date and time to the "parameters" element
+    const currentDateTime = new Date().toString();
+    parametersElement.innerHTML += ` (requested at ${currentDateTime})`;
+  </script>
+</body>
+</html>
