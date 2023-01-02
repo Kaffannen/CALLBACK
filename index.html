@@ -4,41 +4,23 @@
   <title>GET Request Demo</title>
 </head>
 <body>
-  <h1>GET Request Demo</h1>
   <p>
+    The parameters of the GET request are:
     <span id="parameters"></span>
   </p>
 
   <script>
-    try {
-      // Get the query string from the URL
-      const queryString = window.location.search;
+    // Get the query string from the URL
+    const queryString = window.location.search;
 
-      // Get the parameters from the query string
-      const urlParams = new URLSearchParams(queryString);
+    // Get the parameters from the query string
+    const urlParams = new URLSearchParams(queryString);
 
-      // Check that there are two parameters and that they are "code" and "state"
-      if (urlParams.size === 2 && urlParams.has('code') && urlParams.has('state')) {
-        // Get the "parameters" element from the page
-        const parametersElement = document.getElementById('parameters');
+    // Get the "parameters" element from the page
+    const parametersElement = document.getElementById('parameters');
 
-        // Create a JSON object with the "code" and "state" parameters
-        const paramsObject = {
-          code: urlParams.get('code'),
-          state: urlParams.get('state')
-        };
-
-        // Convert the JSON object to a string
-        const paramsJson = JSON.stringify(paramsObject);
-
-        // Append the JSON string to the "parameters" element
-        parametersElement.innerHTML = paramsJson;
-      } else {
-        throw new Error('Invalid parameters');
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    // Append the parameters to the "parameters" element
+    parametersElement.innerHTML = urlParams;
   </script>
 </body>
 </html>
