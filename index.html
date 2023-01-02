@@ -1,4 +1,4 @@
-			<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>GET Request Demo</title>
@@ -17,15 +17,23 @@
     // Get the parameters from the query string
     const urlParams = new URLSearchParams(queryString);
 
-    // Get the "parameters" element from the page
-    const parametersElement = document.getElementById('parameters');
+    // Check that there are two parameters and that they are "code" and "state"
+    if (urlParams.size === 2 && urlParams.has('code') && urlParams.has('state')) {
+      // Get the "parameters" element from the page
+      const parametersElement = document.getElementById('parameters');
 
-    // Append the parameters to the "parameters" element
-    parametersElement.innerHTML = urlParams;
+      // Create a JSON object with the "code" and "state" parameters
+      const paramsObject = {
+        code: urlParams.get('code'),
+        state: urlParams.get('state')
+      };
 
-    // Append the current date and time to the "parameters" element
-    const currentDateTime = new Date().toString();
-    parametersElement.innerHTML += ` (requested at ${currentDateTime})`;
+      // Convert the JSON object to a string
+      const paramsJson = JSON.stringify(paramsObject);
+
+      // Append the JSON string to the "parameters" element
+      parametersElement.innerHTML = paramsJson;
+    }
   </script>
 </body>
 </html>
