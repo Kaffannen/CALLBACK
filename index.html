@@ -6,19 +6,13 @@
 <body>
   <script>
     // Get the location object of the webpage
-    var location = window.location;
-
-    // Serialize the location object into a JSON string
-    var data = JSON.stringify(location);
-
+    const params =URLSearchParams(window.location.search);
+   
+    // Append the query string to the URL
+    const url = 'http://192.168.10.189:8080?' + params.toString();
+    
     // Send the JSON string as the message body of the GET request
-    fetch('http://192.168.10.189:8080', {
-      method: 'GET',
-      body: data,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    fetch(url)
       .then(response => response.text())
       .then(text => console.log(text))
       .catch(error => console.error(error));
