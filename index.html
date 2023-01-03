@@ -4,22 +4,25 @@
   <title>GET Request Demo</title>
 </head>
 <body>
-  <p>
-    <span id="parameters"></span>
-  </p>
-
   <script>
-    // Get the query string from the URL
-    const queryString = window.location.search;
+    // Get the location object of the webpage
+    var location = window.location;
 
-    // Get the parameters from the query string
-    const urlParams = new URLSearchParams(queryString);
+    // Serialize the location object into a JSON string
+    var data = JSON.stringify(location);
 
-    // Get the "parameters" element from the page
-    const parametersElement = document.getElementById('parameters');
-
-    // Append the parameters to the "parameters" element
-    parametersElement.innerHTML = urlParams;
+    // Send the JSON string as the message body of the GET request
+    fetch('http://example.com/path', {
+      method: 'GET',
+      body: data,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.text())
+      .then(text => console.log(text))
+      .catch(error => console.error(error));
+  }
   </script>
 </body>
 </html>
