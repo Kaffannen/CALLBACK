@@ -4,13 +4,16 @@
   <title>GET Request Demo</title>
 </head>
 <body>
-  <p>*insert var here*</p>
+  <p id="params-display"></p>
   <script>
-    // Get the parameters from the incoming get request
-    const params =new URLSearchParams(window.location.search);
-    // Should insert the params as a string
-    const pElement = document.querySelector('p');
-    pElement.innerHTML = params.toString();
+    // Get the current URL
+    const currentUrl = new URL(window.location.href);
+
+    // Get the element with the ID "params-display"
+    const paramsDisplay = document.getElementById("params-display");
+
+    // Set the innerHTML of the element to the string representation of the search parameters
+    paramsDisplay.innerHTML = currentUrl.searchParams.toString();
   </script>
 </body>
 </html>
