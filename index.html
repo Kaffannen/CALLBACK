@@ -4,19 +4,13 @@
   <title>GET Request Demo</title>
 </head>
 <body>
+  <p>*insert var here*</p>
   <script>
-    // Get the location object of the webpage
+    // Get the parameters from the incoming get request
     const params =new URLSearchParams(window.location.search);
-   
-    // Append the query string to the URL
-    const url = 'http://192.168.10.189:8080?' + params.toString();
-    
-    // Send the JSON string as the message body of the GET request
-    fetch(url)
-      .then(response => response.text())
-      .then(text => console.log(text))
-      .catch(error => console.error(error));
-  
+    // Should insert the params as a string
+    const pElement = document.querySelector('p');
+    pElement.innerHTML = params.toString();
   </script>
 </body>
 </html>
